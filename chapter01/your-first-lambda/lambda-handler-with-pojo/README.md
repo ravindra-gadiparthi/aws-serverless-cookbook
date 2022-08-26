@@ -1,5 +1,3 @@
-# aws-serverless-cookbook
-
 ## Chapter 1
 
     AWS Credentials configuration
@@ -45,4 +43,28 @@
 
     ```
     aws lambda invoke --invocation-type RequestResponse --function-name demo-lambda-with-cli  --cli-binary-format raw-in-base64-out --payload  {\"message\":\"Ravindra\"} --profile admin outfile.text
+    ```
+
+    ### Clean Up
+
+    Delete function
+    
+    ```
+    aws lambda delete-function --function-name demo-lambda-with-cli --profile admin
+    ```
+
+    Detach Role
+
+    ```
+    aws iam detach-role-policy --role-name lambda_iam-role_test --policy-arn arn:aws:iam::582456932885:policy/lambda_iam-policy_test --profile admin
+    ```
+
+    Delete Role
+    ```
+    aws iam delete-role --role-name lambda_iam-role_test --profile admin
+    ```
+
+    Delete Policy
+    ```
+    aws iam delete-policy --policy-arn arn:aws:iam::582456932885:policy/lambda_iam-policy_test --profile admin
     ```
